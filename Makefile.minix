@@ -1,0 +1,30 @@
+# Makefile for the Simple Secure Channel implementation (and related utilities)
+
+CC=gcc
+DEBUG_FLAGS=-g
+
+ARCH_FLAGS="-DARCH_MINIX ${DEBUG_FLAGS}"
+ARCH_SUBDIR=os/bsd
+OS_LIBS=
+ALWAYS_AR=ar
+
+SUBDIRS=utils/mksef utils/fsck_sef utils/sefc
+all:	subdirs
+
+install:
+	set -e; for i in $(SUBDIRS); do (echo $$i:; cd $$i && make install); done
+
+subdirs:
+	set -e; for i in $(SUBDIRS); do \
+		(echo $$i:; cd $$i && \
+		$(MAKE) ARCH_FLAGS=${ARCH_FLAGS} ARCH_SUBDIR="${ARCH_SUBDIR}" \
+			OS_LIBS="${OS_LIBS}" ALWAYS_AR="${ALWAYS_AR}" \
+			CC="${CC}" all); \
+	done
+
+clean:
+	for i in $(SUBDIRS); do (echo $$i:; cd $$i && \
+		make ARCH_SUBDIR="${ARCH_SUBDIR}" clean); done
+
+#
+# $PchId: Makefile.bsd,v 1.1 2012/01/27 16:01:02 philip Exp $

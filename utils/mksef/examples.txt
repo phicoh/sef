@@ -1,0 +1,5 @@
+./mksef -p password -b 512 -s 1Mi foo
+./mksef -p password -f 1Mi -b 512 -s 4Mi foo
+./mksef -p password -f 1Mi -b 512 -s 1Gi foo
+./mksef -p password -f 1Mi -b 512 -s 16Mi foo
+./mksef -p password -f 1Mi -b 512 -s 200Mi foo
