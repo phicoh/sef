@@ -9,7 +9,7 @@ clean:
 	rm -f mksef $(MKSEF_OBJ)
 
 mksef:	$(MKSEF_OBJ)
-	$(CC) -o $@ $(MKSEF_OBJ)
+	$(CC) -o $@ $(MKSEF_OBJ) $(OS_LIBS)
 
 buf.o: ../../lib/buf.c ../../lib/buf.h 
 	$(CC) $(CFLAGS) -c $<

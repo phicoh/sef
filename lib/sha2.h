@@ -80,7 +80,12 @@ typedef u64_t u_int64_t;	/* 8-bytes (64-bits) */
 #endif /* __minix */
 
 #ifdef ARCH_LINUX
-#include "../../include/os.h"
+
+#include "os.h"
+
+typedef uint8_t u_int8_t;	/* 1-byte  (8-bits)  */
+typedef uint32_t u_int32_t;	/* 4-bytes (32-bits) */
+typedef uint64_t u_int64_t;	/* 8-bytes (64-bits) */
 
 /* Should figure out byteorder on Linux */
 #define SHA2_BYTE_ORDER		SHA2_LITTLE_ENDIAN

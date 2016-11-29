@@ -10,7 +10,7 @@ clean:
 	rm -f sefc $(SEFC_OBJ)
 
 sefc:	$(SEFC_OBJ)
-	$(CC) -o $@ $(SEFC_OBJ)
+	$(CC) -o $@ $(SEFC_OBJ) $(OS_LIBS)
 
 sefc.o: ../../lib/buf.h ../../include/sef/checkpoint.h ../../include/sef/inode.h
 

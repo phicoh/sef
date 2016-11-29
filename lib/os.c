@@ -5,7 +5,10 @@ os.c
 #include "os.h"
 #include "os_crypto.h"
 
+#ifndef DEV_RANDOM
+/* Most operating systems are sensible, Linux is an exception */
 #define DEV_RANDOM	"/dev/random"
+#endif
 
 void os_random(void *data, size_t len)
 {

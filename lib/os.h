@@ -31,6 +31,29 @@ typedef uint64_t uint64_T;
 
 #endif /* ARCH_BSD */
 
+#ifdef ARCH_LINUX
+
+#define _XOPEN_SOURCE 500
+
+#include <assert.h>
+#include <stdint.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include <unistd.h>
+#include <sys/time.h>
+
+#define DEV_RANDOM	"/dev/urandom"
+
+typedef uint8_t uint8_T;
+typedef uint16_t uint16_T;
+typedef uint32_t uint32_T;
+typedef uint64_t uint64_T;
+
+#define _NORETURN __attribute__((noreturn))
+
+#endif /* ARCH_LINUX */
+
 #ifdef ARCH_MINIX
 
 #define _MINIX_SOURCE
